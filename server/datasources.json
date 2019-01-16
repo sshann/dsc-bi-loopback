@@ -1,0 +1,8 @@
+{
+  "models_source": {
+    "name": "models_source",
+    "localStorage": "C:\\Users\\khalil\\Desktop\\loopback_models\\loopback_models",
+    "file": "",
+    "connector": "memory"
+  }
+}

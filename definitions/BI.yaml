@@ -1,0 +1,1575 @@
+paths:
+  /Companies:
+    post:
+      tags:
+        - Company
+      summary: Create a new instance of the model and persist it into the data source.
+      operationId: Company.create
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Company'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Company'
+      deprecated: false
+    patch:
+      tags:
+        - Company
+      summary: Patch an existing model instance or insert a new one into the data source.
+      operationId: Company.patchOrCreate
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Company'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Company'
+      deprecated: false
+    put:
+      tags:
+        - Company
+      summary: Replace an existing model instance or insert a new one into the data source.
+      operationId: Company.replaceOrCreate__put_Companies
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Company'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Company'
+      deprecated: false
+    get:
+      tags:
+        - Company
+      summary: Find all instances of the model matched by filter from the data source.
+      operationId: Company.find
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Company'
+      deprecated: false
+  /Companies/replaceOrCreate:
+    post:
+      tags:
+        - Company
+      summary: Replace an existing model instance or insert a new one into the data source.
+      operationId: Company.replaceOrCreate__post_Companies_replaceOrCreate
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Company'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Company'
+      deprecated: false
+  /Companies/upsertWithWhere:
+    post:
+      tags:
+        - Company
+      summary: Update an existing model instance or insert a new one into the data source based on the where criteria.
+      operationId: Company.upsertWithWhere
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/Company'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Company'
+      deprecated: false
+  '/Companies/{id}/exists':
+    get:
+      tags:
+        - Company
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'Company.exists__get_Companies_{id}_exists'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+  '/Companies/{id}':
+    head:
+      tags:
+        - Company
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'Company.exists__head_Companies_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+    get:
+      tags:
+        - Company
+      summary: 'Find a model instance by {{id}} from the data source.'
+      operationId: Company.findById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: filter
+          in: query
+          description: 'Filter defining fields and include - must be a JSON-encoded string ({"something":"value"})'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Company'
+      deprecated: false
+    put:
+      tags:
+        - Company
+      summary: Replace attributes for a model instance and persist it into the data source.
+      operationId: 'Company.replaceById__put_Companies_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Company'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Company'
+      deprecated: false
+    delete:
+      tags:
+        - Company
+      summary: 'Delete a model instance by {{id}} from the data source.'
+      operationId: Company.deleteById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    patch:
+      tags:
+        - Company
+      summary: Patch attributes for a model instance and persist it into the data source.
+      operationId: Company.prototype.patchAttributes
+      parameters:
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/Company'
+        - name: id
+          in: path
+          description: Company id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Company'
+      deprecated: false
+  '/Companies/{id}/replace':
+    post:
+      tags:
+        - Company
+      summary: Replace attributes for a model instance and persist it into the data source.
+      operationId: 'Company.replaceById__post_Companies_{id}_replace'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Company'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Company'
+      deprecated: false
+  /Companies/findOne:
+    get:
+      tags:
+        - Company
+      summary: Find first instance of the model matched by filter from the data source.
+      operationId: Company.findOne
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Company'
+      deprecated: false
+  /Companies/update:
+    post:
+      tags:
+        - Company
+      summary: 'Update instances of the model matched by {{where}} from the data source.'
+      operationId: Company.updateAll
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/Company'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: Information related to the outcome of the operation
+            type: object
+            properties:
+              count:
+                description: The number of instances updated
+                type: number
+                format: double
+      deprecated: false
+  /Companies/count:
+    get:
+      tags:
+        - Company
+      summary: Count instances of the model matched by where from the data source.
+      operationId: Company.count
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+  /TransactionData:
+    post:
+      tags:
+        - TransactionData
+      summary: Create a new instance of the model and persist it into the data source.
+      operationId: TransactionData.create
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/TransactionData'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/TransactionData'
+      deprecated: false
+    patch:
+      tags:
+        - TransactionData
+      summary: Patch an existing model instance or insert a new one into the data source.
+      operationId: TransactionData.patchOrCreate
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/TransactionData'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/TransactionData'
+      deprecated: false
+    put:
+      tags:
+        - TransactionData
+      summary: Replace an existing model instance or insert a new one into the data source.
+      operationId: TransactionData.replaceOrCreate__put_TransactionData
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/TransactionData'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/TransactionData'
+      deprecated: false
+    get:
+      tags:
+        - TransactionData
+      summary: Find all instances of the model matched by filter from the data source.
+      operationId: TransactionData.find
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/TransactionData'
+      deprecated: false
+  /TransactionData/replaceOrCreate:
+    post:
+      tags:
+        - TransactionData
+      summary: Replace an existing model instance or insert a new one into the data source.
+      operationId: TransactionData.replaceOrCreate__post_TransactionData_replaceOrCreate
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/TransactionData'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/TransactionData'
+      deprecated: false
+  /TransactionData/upsertWithWhere:
+    post:
+      tags:
+        - TransactionData
+      summary: Update an existing model instance or insert a new one into the data source based on the where criteria.
+      operationId: TransactionData.upsertWithWhere
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/TransactionData'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/TransactionData'
+      deprecated: false
+  '/TransactionData/{id}/exists':
+    get:
+      tags:
+        - TransactionData
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'TransactionData.exists__get_TransactionData_{id}_exists'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+  '/TransactionData/{id}':
+    head:
+      tags:
+        - TransactionData
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'TransactionData.exists__head_TransactionData_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+    get:
+      tags:
+        - TransactionData
+      summary: 'Find a model instance by {{id}} from the data source.'
+      operationId: TransactionData.findById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: filter
+          in: query
+          description: 'Filter defining fields and include - must be a JSON-encoded string ({"something":"value"})'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/TransactionData'
+      deprecated: false
+    put:
+      tags:
+        - TransactionData
+      summary: Replace attributes for a model instance and persist it into the data source.
+      operationId: 'TransactionData.replaceById__put_TransactionData_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/TransactionData'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/TransactionData'
+      deprecated: false
+    delete:
+      tags:
+        - TransactionData
+      summary: 'Delete a model instance by {{id}} from the data source.'
+      operationId: TransactionData.deleteById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    patch:
+      tags:
+        - TransactionData
+      summary: Patch attributes for a model instance and persist it into the data source.
+      operationId: TransactionData.prototype.patchAttributes
+      parameters:
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/TransactionData'
+        - name: id
+          in: path
+          description: TransactionData id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/TransactionData'
+      deprecated: false
+  '/TransactionData/{id}/replace':
+    post:
+      tags:
+        - TransactionData
+      summary: Replace attributes for a model instance and persist it into the data source.
+      operationId: 'TransactionData.replaceById__post_TransactionData_{id}_replace'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/TransactionData'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/TransactionData'
+      deprecated: false
+  /TransactionData/findOne:
+    get:
+      tags:
+        - TransactionData
+      summary: Find first instance of the model matched by filter from the data source.
+      operationId: TransactionData.findOne
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/TransactionData'
+      deprecated: false
+  /TransactionData/update:
+    post:
+      tags:
+        - TransactionData
+      summary: 'Update instances of the model matched by {{where}} from the data source.'
+      operationId: TransactionData.updateAll
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/TransactionData'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: Information related to the outcome of the operation
+            type: object
+            properties:
+              count:
+                description: The number of instances updated
+                type: number
+                format: double
+      deprecated: false
+  /TransactionData/count:
+    get:
+      tags:
+        - TransactionData
+      summary: Count instances of the model matched by where from the data source.
+      operationId: TransactionData.count
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+  /EmployeeData:
+    post:
+      tags:
+        - EmployeeData
+      summary: Create a new instance of the model and persist it into the data source.
+      operationId: EmployeeData.create
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/EmployeeData'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/EmployeeData'
+      deprecated: false
+    patch:
+      tags:
+        - EmployeeData
+      summary: Patch an existing model instance or insert a new one into the data source.
+      operationId: EmployeeData.patchOrCreate
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/EmployeeData'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/EmployeeData'
+      deprecated: false
+    put:
+      tags:
+        - EmployeeData
+      summary: Replace an existing model instance or insert a new one into the data source.
+      operationId: EmployeeData.replaceOrCreate__put_EmployeeData
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/EmployeeData'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/EmployeeData'
+      deprecated: false
+    get:
+      tags:
+        - EmployeeData
+      summary: Find all instances of the model matched by filter from the data source.
+      operationId: EmployeeData.find
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/EmployeeData'
+      deprecated: false
+  /EmployeeData/replaceOrCreate:
+    post:
+      tags:
+        - EmployeeData
+      summary: Replace an existing model instance or insert a new one into the data source.
+      operationId: EmployeeData.replaceOrCreate__post_EmployeeData_replaceOrCreate
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/EmployeeData'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/EmployeeData'
+      deprecated: false
+  /EmployeeData/upsertWithWhere:
+    post:
+      tags:
+        - EmployeeData
+      summary: Update an existing model instance or insert a new one into the data source based on the where criteria.
+      operationId: EmployeeData.upsertWithWhere
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/EmployeeData'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/EmployeeData'
+      deprecated: false
+  '/EmployeeData/{id}/exists':
+    get:
+      tags:
+        - EmployeeData
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'EmployeeData.exists__get_EmployeeData_{id}_exists'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+  '/EmployeeData/{id}':
+    head:
+      tags:
+        - EmployeeData
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'EmployeeData.exists__head_EmployeeData_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+    get:
+      tags:
+        - EmployeeData
+      summary: 'Find a model instance by {{id}} from the data source.'
+      operationId: EmployeeData.findById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: filter
+          in: query
+          description: 'Filter defining fields and include - must be a JSON-encoded string ({"something":"value"})'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/EmployeeData'
+      deprecated: false
+    put:
+      tags:
+        - EmployeeData
+      summary: Replace attributes for a model instance and persist it into the data source.
+      operationId: 'EmployeeData.replaceById__put_EmployeeData_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/EmployeeData'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/EmployeeData'
+      deprecated: false
+    delete:
+      tags:
+        - EmployeeData
+      summary: 'Delete a model instance by {{id}} from the data source.'
+      operationId: EmployeeData.deleteById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    patch:
+      tags:
+        - EmployeeData
+      summary: Patch attributes for a model instance and persist it into the data source.
+      operationId: EmployeeData.prototype.patchAttributes
+      parameters:
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/EmployeeData'
+        - name: id
+          in: path
+          description: EmployeeData id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/EmployeeData'
+      deprecated: false
+  '/EmployeeData/{id}/replace':
+    post:
+      tags:
+        - EmployeeData
+      summary: Replace attributes for a model instance and persist it into the data source.
+      operationId: 'EmployeeData.replaceById__post_EmployeeData_{id}_replace'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/EmployeeData'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/EmployeeData'
+      deprecated: false
+  /EmployeeData/findOne:
+    get:
+      tags:
+        - EmployeeData
+      summary: Find first instance of the model matched by filter from the data source.
+      operationId: EmployeeData.findOne
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/EmployeeData'
+      deprecated: false
+  /EmployeeData/update:
+    post:
+      tags:
+        - EmployeeData
+      summary: 'Update instances of the model matched by {{where}} from the data source.'
+      operationId: EmployeeData.updateAll
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/EmployeeData'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: Information related to the outcome of the operation
+            type: object
+            properties:
+              count:
+                description: The number of instances updated
+                type: number
+                format: double
+      deprecated: false
+  /EmployeeData/count:
+    get:
+      tags:
+        - EmployeeData
+      summary: Count instances of the model matched by where from the data source.
+      operationId: EmployeeData.count
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+  /ProductData:
+    post:
+      tags:
+        - ProductData
+      summary: Create a new instance of the model and persist it into the data source.
+      operationId: ProductData.create
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/ProductData'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/ProductData'
+      deprecated: false
+    patch:
+      tags:
+        - ProductData
+      summary: Patch an existing model instance or insert a new one into the data source.
+      operationId: ProductData.patchOrCreate
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/ProductData'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/ProductData'
+      deprecated: false
+    put:
+      tags:
+        - ProductData
+      summary: Replace an existing model instance or insert a new one into the data source.
+      operationId: ProductData.replaceOrCreate__put_ProductData
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/ProductData'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/ProductData'
+      deprecated: false
+    get:
+      tags:
+        - ProductData
+      summary: Find all instances of the model matched by filter from the data source.
+      operationId: ProductData.find
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ProductData'
+      deprecated: false
+  /ProductData/replaceOrCreate:
+    post:
+      tags:
+        - ProductData
+      summary: Replace an existing model instance or insert a new one into the data source.
+      operationId: ProductData.replaceOrCreate__post_ProductData_replaceOrCreate
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/ProductData'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/ProductData'
+      deprecated: false
+  /ProductData/upsertWithWhere:
+    post:
+      tags:
+        - ProductData
+      summary: Update an existing model instance or insert a new one into the data source based on the where criteria.
+      operationId: ProductData.upsertWithWhere
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/ProductData'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/ProductData'
+      deprecated: false
+  '/ProductData/{id}/exists':
+    get:
+      tags:
+        - ProductData
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'ProductData.exists__get_ProductData_{id}_exists'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+  '/ProductData/{id}':
+    head:
+      tags:
+        - ProductData
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'ProductData.exists__head_ProductData_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+    get:
+      tags:
+        - ProductData
+      summary: 'Find a model instance by {{id}} from the data source.'
+      operationId: ProductData.findById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: filter
+          in: query
+          description: 'Filter defining fields and include - must be a JSON-encoded string ({"something":"value"})'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/ProductData'
+      deprecated: false
+    put:
+      tags:
+        - ProductData
+      summary: Replace attributes for a model instance and persist it into the data source.
+      operationId: 'ProductData.replaceById__put_ProductData_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/ProductData'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/ProductData'
+      deprecated: false
+    delete:
+      tags:
+        - ProductData
+      summary: 'Delete a model instance by {{id}} from the data source.'
+      operationId: ProductData.deleteById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    patch:
+      tags:
+        - ProductData
+      summary: Patch attributes for a model instance and persist it into the data source.
+      operationId: ProductData.prototype.patchAttributes
+      parameters:
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/ProductData'
+        - name: id
+          in: path
+          description: ProductData id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/ProductData'
+      deprecated: false
+  '/ProductData/{id}/replace':
+    post:
+      tags:
+        - ProductData
+      summary: Replace attributes for a model instance and persist it into the data source.
+      operationId: 'ProductData.replaceById__post_ProductData_{id}_replace'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/ProductData'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/ProductData'
+      deprecated: false
+  /ProductData/findOne:
+    get:
+      tags:
+        - ProductData
+      summary: Find first instance of the model matched by filter from the data source.
+      operationId: ProductData.findOne
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/ProductData'
+      deprecated: false
+  /ProductData/update:
+    post:
+      tags:
+        - ProductData
+      summary: 'Update instances of the model matched by {{where}} from the data source.'
+      operationId: ProductData.updateAll
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/ProductData'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: Information related to the outcome of the operation
+            type: object
+            properties:
+              count:
+                description: The number of instances updated
+                type: number
+                format: double
+      deprecated: false
+  /ProductData/count:
+    get:
+      tags:
+        - ProductData
+      summary: Count instances of the model matched by where from the data source.
+      operationId: ProductData.count
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+definitions:
+  Company:
+    properties:
+      name:
+        type: string
+      responsibleEmail:
+        type: string
+      responsiblePhone:
+        type: string
+      responsibleName:
+        type: string
+      id:
+        type: number
+        format: double
+    required:
+      - name
+      - responsibleEmail
+      - responsiblePhone
+      - responsibleName
+    additionalProperties: false
+  x-any:
+    properties: {}
+  TransactionData:
+    properties:
+      type:
+        type: string
+      value:
+        type: number
+        format: double
+      date:
+        type: string
+        format: date-time
+      items:
+        type: string
+      reference:
+        type: string
+      id:
+        type: number
+        format: double
+    required:
+      - type
+      - value
+      - date
+      - items
+      - reference
+    additionalProperties: false
+  EmployeeData:
+    properties:
+      department:
+        type: string
+      total_employees:
+        type: number
+        format: double
+      total_teams:
+        type: number
+        format: double
+      date:
+        type: string
+        format: date-time
+      total_salary_paid:
+        type: number
+        format: double
+      id:
+        type: number
+        format: double
+    required:
+      - department
+      - total_employees
+      - total_teams
+      - date
+      - total_salary_paid
+    additionalProperties: false
+  ProductData:
+    properties:
+      type:
+        type: string
+      date:
+        type: string
+        format: date-time
+      total_value:
+        type: number
+        format: double
+      category:
+        type: string
+      id:
+        type: number
+        format: double
+    required:
+      - type
+      - date
+      - total_value
+      - category
+    additionalProperties: false
+basePath: /api
+swagger: '2.0'
+info:
+  x-ibm-name: bi
+  version: 1.0.0
+  title: BI
+schemes:
+  - https
+host: $(catalog.host)
+consumes:
+  - application/json
+produces:
+  - application/json
+securityDefinitions:
+  clientIdHeader:
+    type: apiKey
+    in: header
+    name: X-IBM-Client-Id
+  clientSecretHeader:
+    in: header
+    name: X-IBM-Client-Secret
+    type: apiKey
+security:
+  - clientIdHeader: []
+    clientSecretHeader: []
+x-ibm-configuration:
+  testable: true
+  enforced: true
+  cors:
+    enabled: true
+  catalogs:
+    apic-dev:
+      properties:
+        runtime-url: $(TARGET_URL)
+    sb:
+      properties:
+        runtime-url: 'http://localhost:4001'
+  assembly:
+    execute:
+      - invoke:
+          target-url: $(runtime-url)$(request.path)$(request.search)

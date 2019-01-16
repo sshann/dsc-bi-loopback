@@ -1,0 +1,34 @@
+{
+  "name": "EmployeeData",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "department": {
+      "type": "string",
+      "required": true
+    },
+    "total_employees": {
+      "type": "number",
+      "required": true
+    },
+    "total_teams": {
+      "type": "number",
+      "required": true
+    },
+    "date": {
+      "type": "date",
+      "required": true
+    },
+    "total_salary_paid": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

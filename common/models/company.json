@@ -1,0 +1,30 @@
+{
+  "name": "Company",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "responsibleEmail": {
+      "type": "string",
+      "required": true
+    },
+    "responsiblePhone": {
+      "type": "string",
+      "required": true
+    },
+    "responsibleName": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

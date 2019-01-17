@@ -14,19 +14,19 @@
     ]
   },
   "Company": {
-    "dataSource": "models_source",
+    "dataSource": "company_cloudant",
     "public": true
   },
   "TransactionData": {
-    "dataSource": "models_source",
+    "dataSource": "transaction_data_cloudant",
     "public": true
   },
   "EmployeeData": {
-    "dataSource": "models_source",
+    "dataSource": "employee_data_cloudant",
     "public": true
   },
   "ProductData": {
-    "dataSource": "models_source",
+    "dataSource": "product_data_cloudant",
     "public": true
   }
 }

@@ -1446,28 +1446,22 @@ definitions:
         type: string
       responsibleEmail:
         type: string
-      responsiblePhone:
-        type: string
       responsibleName:
         type: string
+      responsiblePhone:
+        type: string
       id:
-        type: number
-        format: double
+        type: string
     required:
       - name
       - responsibleEmail
-      - responsiblePhone
       - responsibleName
+      - responsiblePhone
     additionalProperties: false
   x-any:
     properties: {}
   TransactionData:
     properties:
-      type:
-        type: string
-      value:
-        type: number
-        format: double
       date:
         type: string
         format: date-time
@@ -1475,45 +1469,48 @@ definitions:
         type: string
       reference:
         type: string
-      id:
+      type:
+        type: string
+      value:
         type: number
         format: double
+      id:
+        type: string
     required:
-      - type
-      - value
       - date
       - items
       - reference
+      - type
+      - value
     additionalProperties: false
   EmployeeData:
     properties:
+      date:
+        type: string
+        format: date-time
       department:
         type: string
       total_employees:
         type: number
         format: double
-      total_teams:
-        type: number
-        format: double
-      date:
-        type: string
-        format: date-time
       total_salary_paid:
         type: number
         format: double
-      id:
+      total_teams:
         type: number
         format: double
+      id:
+        type: string
     required:
+      - date
       - department
       - total_employees
-      - total_teams
-      - date
       - total_salary_paid
+      - total_teams
     additionalProperties: false
   ProductData:
     properties:
-      type:
+      category:
         type: string
       date:
         type: string
@@ -1521,16 +1518,15 @@ definitions:
       total_value:
         type: number
         format: double
-      category:
+      type:
         type: string
       id:
-        type: number
-        format: double
+        type: string
     required:
-      - type
+      - category
       - date
       - total_value
-      - category
+      - type
     additionalProperties: false
 basePath: /api
 swagger: '2.0'

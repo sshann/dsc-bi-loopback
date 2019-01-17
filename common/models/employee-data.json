@@ -6,6 +6,10 @@
     "validateUpsert": true
   },
   "properties": {
+    "date": {
+      "type": "date",
+      "required": true
+    },
     "department": {
       "type": "string",
       "required": true
@@ -14,15 +18,11 @@
       "type": "number",
       "required": true
     },
-    "total_teams": {
+    "total_salary_paid": {
       "type": "number",
       "required": true
     },
-    "date": {
-      "type": "date",
-      "required": true
-    },
-    "total_salary_paid": {
+    "total_teams": {
       "type": "number",
       "required": true
     }

@@ -24,7 +24,23 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "employeeData": {
+      "type": "hasMany",
+      "model": "EmployeeData",
+      "foreignKey": "company_id"
+    },
+    "productData": {
+      "type": "hasMany",
+      "model": "ProductData",
+      "foreignKey": "company_id"
+    },
+    "transactionData": {
+      "type": "hasMany",
+      "model": "TransactionData",
+      "foreignKey": "company_id"
+    }
+  },
   "acls": [],
   "methods": {}
 }

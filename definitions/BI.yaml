@@ -1,4 +1,514 @@
 paths:
+  '/Companies/{id}/transactionData/{fk}':
+    get:
+      tags:
+        - Company
+      summary: Find a related item by id for transactionData.
+      operationId: Company.prototype.__findById__transactionData
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for transactionData
+          required: true
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: Company id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/TransactionData'
+      deprecated: false
+    delete:
+      tags:
+        - Company
+      summary: Delete a related item by id for transactionData.
+      operationId: Company.prototype.__destroyById__transactionData
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for transactionData
+          required: true
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: Company id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+    put:
+      tags:
+        - Company
+      summary: Update a related item by id for transactionData.
+      operationId: Company.prototype.__updateById__transactionData
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for transactionData
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/TransactionData'
+        - name: id
+          in: path
+          description: Company id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/TransactionData'
+      deprecated: false
+  '/Companies/{id}/employeeData/{fk}':
+    get:
+      tags:
+        - Company
+      summary: Find a related item by id for employeeData.
+      operationId: Company.prototype.__findById__employeeData
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for employeeData
+          required: true
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: Company id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/EmployeeData'
+      deprecated: false
+    delete:
+      tags:
+        - Company
+      summary: Delete a related item by id for employeeData.
+      operationId: Company.prototype.__destroyById__employeeData
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for employeeData
+          required: true
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: Company id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+    put:
+      tags:
+        - Company
+      summary: Update a related item by id for employeeData.
+      operationId: Company.prototype.__updateById__employeeData
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for employeeData
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/EmployeeData'
+        - name: id
+          in: path
+          description: Company id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/EmployeeData'
+      deprecated: false
+  '/Companies/{id}/productData/{fk}':
+    get:
+      tags:
+        - Company
+      summary: Find a related item by id for productData.
+      operationId: Company.prototype.__findById__productData
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for productData
+          required: true
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: Company id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/ProductData'
+      deprecated: false
+    delete:
+      tags:
+        - Company
+      summary: Delete a related item by id for productData.
+      operationId: Company.prototype.__destroyById__productData
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for productData
+          required: true
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: Company id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+    put:
+      tags:
+        - Company
+      summary: Update a related item by id for productData.
+      operationId: Company.prototype.__updateById__productData
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for productData
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/ProductData'
+        - name: id
+          in: path
+          description: Company id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/ProductData'
+      deprecated: false
+  '/Companies/{id}/transactionData':
+    get:
+      tags:
+        - Company
+      summary: Queries transactionData of Company.
+      operationId: Company.prototype.__get__transactionData
+      parameters:
+        - name: filter
+          in: query
+          required: false
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: Company id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/TransactionData'
+      deprecated: false
+    post:
+      tags:
+        - Company
+      summary: Creates a new instance in transactionData of this model.
+      operationId: Company.prototype.__create__transactionData
+      parameters:
+        - name: data
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/TransactionData'
+        - name: id
+          in: path
+          description: Company id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/TransactionData'
+      deprecated: false
+    delete:
+      tags:
+        - Company
+      summary: Deletes all transactionData of this model.
+      operationId: Company.prototype.__delete__transactionData
+      parameters:
+        - name: id
+          in: path
+          description: Company id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+  '/Companies/{id}/transactionData/count':
+    get:
+      tags:
+        - Company
+      summary: Counts transactionData of Company.
+      operationId: Company.prototype.__count__transactionData
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: Company id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+  '/Companies/{id}/employeeData':
+    get:
+      tags:
+        - Company
+      summary: Queries employeeData of Company.
+      operationId: Company.prototype.__get__employeeData
+      parameters:
+        - name: filter
+          in: query
+          required: false
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: Company id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/EmployeeData'
+      deprecated: false
+    post:
+      tags:
+        - Company
+      summary: Creates a new instance in employeeData of this model.
+      operationId: Company.prototype.__create__employeeData
+      parameters:
+        - name: data
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/EmployeeData'
+        - name: id
+          in: path
+          description: Company id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/EmployeeData'
+      deprecated: false
+    delete:
+      tags:
+        - Company
+      summary: Deletes all employeeData of this model.
+      operationId: Company.prototype.__delete__employeeData
+      parameters:
+        - name: id
+          in: path
+          description: Company id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+  '/Companies/{id}/employeeData/count':
+    get:
+      tags:
+        - Company
+      summary: Counts employeeData of Company.
+      operationId: Company.prototype.__count__employeeData
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: Company id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+  '/Companies/{id}/productData':
+    get:
+      tags:
+        - Company
+      summary: Queries productData of Company.
+      operationId: Company.prototype.__get__productData
+      parameters:
+        - name: filter
+          in: query
+          required: false
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: Company id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ProductData'
+      deprecated: false
+    post:
+      tags:
+        - Company
+      summary: Creates a new instance in productData of this model.
+      operationId: Company.prototype.__create__productData
+      parameters:
+        - name: data
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/ProductData'
+        - name: id
+          in: path
+          description: Company id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/ProductData'
+      deprecated: false
+    delete:
+      tags:
+        - Company
+      summary: Deletes all productData of this model.
+      operationId: Company.prototype.__delete__productData
+      parameters:
+        - name: id
+          in: path
+          description: Company id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+  '/Companies/{id}/productData/count':
+    get:
+      tags:
+        - Company
+      summary: Counts productData of Company.
+      operationId: Company.prototype.__count__productData
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: Company id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
   /Companies:
     post:
       tags:
@@ -1440,24 +1950,6 @@ paths:
                 format: double
       deprecated: false
 definitions:
-  Company:
-    properties:
-      name:
-        type: string
-      responsibleEmail:
-        type: string
-      responsibleName:
-        type: string
-      responsiblePhone:
-        type: string
-      id:
-        type: string
-    required:
-      - name
-      - responsibleEmail
-      - responsibleName
-      - responsiblePhone
-    additionalProperties: false
   x-any:
     properties: {}
   TransactionData:
@@ -1475,6 +1967,8 @@ definitions:
         type: number
         format: double
       id:
+        type: string
+      company_id:
         type: string
     required:
       - date
@@ -1501,6 +1995,8 @@ definitions:
         format: double
       id:
         type: string
+      company_id:
+        type: string
     required:
       - date
       - department
@@ -1522,11 +2018,31 @@ definitions:
         type: string
       id:
         type: string
+      company_id:
+        type: string
     required:
       - category
       - date
       - total_value
       - type
+    additionalProperties: false
+  Company:
+    properties:
+      name:
+        type: string
+      responsibleEmail:
+        type: string
+      responsibleName:
+        type: string
+      responsiblePhone:
+        type: string
+      id:
+        type: string
+    required:
+      - name
+      - responsibleEmail
+      - responsibleName
+      - responsiblePhone
     additionalProperties: false
 basePath: /api
 swagger: '2.0'

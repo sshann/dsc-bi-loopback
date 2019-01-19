@@ -7,7 +7,7 @@
   },
   "properties": {
     "category": {
-      "name": "string",
+      "type": "string",
       "required": true
     },
     "date": {
@@ -18,7 +18,7 @@
       "type": "number",
       "required": true
     },
-    "type": {
+    "name": {
       "type": "string",
       "required": true
     }

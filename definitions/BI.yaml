@@ -1949,6 +1949,509 @@ paths:
                 type: number
                 format: double
       deprecated: false
+  /Users:
+    post:
+      tags:
+        - Client
+      summary: Create a new instance of the model and persist it into the data source.
+      operationId: Client.create
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Client'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Client'
+      deprecated: false
+    patch:
+      tags:
+        - Client
+      summary: Patch an existing model instance or insert a new one into the data source.
+      operationId: Client.patchOrCreate
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Client'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Client'
+      deprecated: false
+    put:
+      tags:
+        - Client
+      summary: Replace an existing model instance or insert a new one into the data source.
+      operationId: Client.replaceOrCreate__put_Users
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Client'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Client'
+      deprecated: false
+    get:
+      tags:
+        - Client
+      summary: Find all instances of the model matched by filter from the data source.
+      operationId: Client.find
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Client'
+      deprecated: false
+  /Users/replaceOrCreate:
+    post:
+      tags:
+        - Client
+      summary: Replace an existing model instance or insert a new one into the data source.
+      operationId: Client.replaceOrCreate__post_Users_replaceOrCreate
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Client'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Client'
+      deprecated: false
+  /Users/upsertWithWhere:
+    post:
+      tags:
+        - Client
+      summary: Update an existing model instance or insert a new one into the data source based on the where criteria.
+      operationId: Client.upsertWithWhere
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/Client'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Client'
+      deprecated: false
+  '/Users/{id}/exists':
+    get:
+      tags:
+        - Client
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'Client.exists__get_Users_{id}_exists'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+  '/Users/{id}':
+    head:
+      tags:
+        - Client
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'Client.exists__head_Users_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+    get:
+      tags:
+        - Client
+      summary: 'Find a model instance by {{id}} from the data source.'
+      operationId: Client.findById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: filter
+          in: query
+          description: 'Filter defining fields and include - must be a JSON-encoded string ({"something":"value"})'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Client'
+      deprecated: false
+    put:
+      tags:
+        - Client
+      summary: Replace attributes for a model instance and persist it into the data source.
+      operationId: 'Client.replaceById__put_Users_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Client'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Client'
+      deprecated: false
+    delete:
+      tags:
+        - Client
+      summary: 'Delete a model instance by {{id}} from the data source.'
+      operationId: Client.deleteById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    patch:
+      tags:
+        - Client
+      summary: Patch attributes for a model instance and persist it into the data source.
+      operationId: Client.prototype.patchAttributes
+      parameters:
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/Client'
+        - name: id
+          in: path
+          description: Client id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Client'
+      deprecated: false
+  '/Users/{id}/replace':
+    post:
+      tags:
+        - Client
+      summary: Replace attributes for a model instance and persist it into the data source.
+      operationId: 'Client.replaceById__post_Users_{id}_replace'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Client'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Client'
+      deprecated: false
+  /Users/findOne:
+    get:
+      tags:
+        - Client
+      summary: Find first instance of the model matched by filter from the data source.
+      operationId: Client.findOne
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Client'
+      deprecated: false
+  /Users/update:
+    post:
+      tags:
+        - Client
+      summary: 'Update instances of the model matched by {{where}} from the data source.'
+      operationId: Client.updateAll
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/Client'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: Information related to the outcome of the operation
+            type: object
+            properties:
+              count:
+                description: The number of instances updated
+                type: number
+                format: double
+      deprecated: false
+  /Users/count:
+    get:
+      tags:
+        - Client
+      summary: Count instances of the model matched by where from the data source.
+      operationId: Client.count
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+  /Users/login:
+    post:
+      tags:
+        - Client
+      summary: Login a user with username/email and password.
+      operationId: Client.login
+      parameters:
+        - name: credentials
+          in: body
+          required: true
+          schema:
+            type: object
+        - name: include
+          in: query
+          description: Related objects to include in the response. See the description of return value for more details.
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: >+
+              The response body contains properties of the AccessToken created on
+              login.
+
+              Depending on the value of `include` parameter, the body may contain
+              additional properties:
+
+
+
+
+
+
+
+                - `user` - `U+007BUserU+007D` - Data of the currently logged in
+
+              user. (`include=user`)
+
+
+            type: object
+      deprecated: false
+  /Users/logout:
+    post:
+      tags:
+        - Client
+      summary: Logout a user with access token.
+      operationId: Client.logout
+      parameters: []
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+  '/Users/{id}/verify':
+    post:
+      tags:
+        - Client
+      summary: "Trigger user's identity verification with configured verifyOptions"
+      operationId: Client.prototype.verify
+      parameters:
+        - name: id
+          in: path
+          description: Client id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+  /Users/confirm:
+    get:
+      tags:
+        - Client
+      summary: Confirm a user registration with identity verification token.
+      operationId: Client.confirm
+      parameters:
+        - name: uid
+          in: query
+          required: true
+          type: string
+        - name: token
+          in: query
+          required: true
+          type: string
+        - name: redirect
+          in: query
+          required: false
+          type: string
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+  /Users/reset:
+    post:
+      tags:
+        - Client
+      summary: Reset password for a user with email.
+      operationId: Client.resetPassword
+      parameters:
+        - name: options
+          in: body
+          required: true
+          schema:
+            type: object
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+  /Users/change-password:
+    post:
+      tags:
+        - Client
+      summary: "Change a user's password."
+      operationId: Client.changePassword
+      parameters:
+        - name: oldPassword
+          in: formData
+          required: true
+          type: string
+        - name: newPassword
+          in: formData
+          required: true
+          type: string
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+  /Users/reset-password:
+    post:
+      tags:
+        - Client
+      summary: "Reset user's password via a password-reset token."
+      operationId: Client.setPassword
+      parameters:
+        - name: newPassword
+          in: formData
+          required: true
+          type: string
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
 definitions:
   x-any:
     properties: {}
@@ -2043,6 +2546,26 @@ definitions:
       - responsibleEmail
       - responsibleName
       - responsiblePhone
+    additionalProperties: false
+  Client:
+    properties:
+      name:
+        type: string
+      phone:
+        type: string
+      realm:
+        type: string
+      username:
+        type: string
+      email:
+        type: string
+      emailVerified:
+        type: boolean
+      id:
+        type: string
+    required:
+      - name
+      - email
     additionalProperties: false
 basePath: /api
 swagger: '2.0'

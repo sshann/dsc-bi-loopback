@@ -37,5 +37,13 @@
     "password": "838b4dcac84d3d17dfc823d69952719e1f28dc70bf66883233578c3d68ea4e17",
     "name": "product_data_cloudant",
     "connector": "cloudant"
+  },
+  "user_cloudant": {
+    "url": "https://b01ffb79-d7ee-499d-a1d9-70f5a42a22e2-bluemix:838b4dcac84d3d17dfc823d69952719e1f28dc70bf66883233578c3d68ea4e17@b01ffb79-d7ee-499d-a1d9-70f5a42a22e2-bluemix.cloudantnosqldb.appdomain.cloud",
+    "database": "user",
+    "username": "b01ffb79-d7ee-499d-a1d9-70f5a42a22e2-bluemix",
+    "password": "838b4dcac84d3d17dfc823d69952719e1f28dc70bf66883233578c3d68ea4e17",
+    "name": "user_cloudant",
+    "connector": "cloudant"
   }
 }

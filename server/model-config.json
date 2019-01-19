@@ -28,5 +28,9 @@
   "ProductData": {
     "dataSource": "product_data_cloudant",
     "public": true
+  },
+  "Client": {
+    "dataSource": "user_cloudant",
+    "public": true
   }
 }

@@ -34,19 +34,19 @@
     "public": true
   },
   "AccessToken": {
-    "dataSource": "models_source",
+    "dataSource": "access_token_cloudant",
     "public": false
   },
   "ACL": {
-    "dataSource": "models_source",
+    "dataSource": "acl_cloudant",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "models_source",
+    "dataSource": "role_mapping_cloudant",
     "public": false
   },
   "Role": {
-    "dataSource": "models_source",
+    "dataSource": "role_cloudant",
     "public": false
   }
 }

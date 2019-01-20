@@ -32,5 +32,21 @@
   "Client": {
     "dataSource": "user_cloudant",
     "public": true
+  },
+  "AccessToken": {
+    "dataSource": "models_source",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "models_source",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "models_source",
+    "public": false
+  },
+  "Role": {
+    "dataSource": "models_source",
+    "public": false
   }
 }

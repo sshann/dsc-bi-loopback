@@ -2,7 +2,6 @@
   "name": "Company",
   "base": "PersistedModel",
   "idInjection": true,
-  "forceId": true,
   "options": {
     "validateUpsert": true
   },

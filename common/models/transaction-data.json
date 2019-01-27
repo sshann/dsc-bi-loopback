@@ -10,13 +10,17 @@
       "type": "date",
       "required": true
     },
-    "items": {
+    "amount": {
       "type": "string",
       "required": true
     },
     "reference": {
       "type": "string",
-      "required": true
+      "required": false
+    },
+    "description": {
+      "type": "string",
+      "required": false
     },
     "type": {
       "type": "string",

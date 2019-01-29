@@ -1,5 +1,5 @@
 applications:
 - name: toolchain-dsc-bi
   routes:
-  - route: wgenizshannstudentvunl-vuspace.apic.eu-gb.mybluemix.net
+  - route: https://toolchain-dsc-bi.eu-gb.mybluemix.net
   memory: 512M

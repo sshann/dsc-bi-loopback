@@ -7,13 +7,20 @@ module.exports = function(Company) {
     let finishedCount = 0;
     const BUY_INDEX = 0;
     const SELL_INDEX = 1;
-    const resourcesRequested = 2;
+    const resourcesRequested = 3;
 
     Company.getApp((err, app) => {
       let transactionModel = app.models.TransactionData;
+      let productModel = app.models.ProductData;
       let usernModel = app.models.Client;
 
       const transactionFilter = {
+        where: {company_id: id},
+        order: 'date ASC',
+        fields: {_rev: false, company_id: false, id: false, description: false},
+      };
+
+      const productFilter = {
         where: {company_id: id},
         order: 'date ASC',
         fields: {_rev: false, company_id: false, id: false, description: false},
@@ -29,7 +36,28 @@ module.exports = function(Company) {
       setTimeout(() => {
         usernModel.find(userFilter, userCallback);
       }, 500);
+
+      setTimeout(() => {
+        productModel.find(productFilter, productCallback);
+      }, 500);
     });
+
+    function productCallback(err, products) {
+      if (err) {
+        payload = err;
+        finish(true);
+      }
+
+      products = products.map(mapProduct);
+
+      payload.data.products = products;
+      payload.summary.products.amount = products.length;
+      payload.graph.products.stockByDay = getSameDayProperty(products, 'current_stock');
+      payload.graph.products.valueByDay = getSameDayProperty(products, 'current_value');
+      payload.graph.products.stockByCategory = getSameCategoryProperty(products, 'current_stock');
+      payload.graph.products.valueByCategory = getSameCategoryProperty(products, 'current_value');
+      finish();
+    }
 
     function userCallback(err, users) {
       if (err) {
@@ -38,7 +66,7 @@ module.exports = function(Company) {
       }
 
       payload.data.users = users;
-      console.log(users);
+      payload.summary.users.amount = users.length;
       finish();
     }
 
@@ -71,7 +99,6 @@ module.exports = function(Company) {
       payload.summary.transactions.countBuy = buySellArray[BUY_INDEX].length;
       payload.summary.transactions.valueBuy = sumValue(payload.graph.transactions.valueByDay[BUY_INDEX].series, 'value');
       payload.summary.transactions.valueSell = sumValue(payload.graph.transactions.valueByDay[SELL_INDEX].series, 'value');
-
       finish();
     }
 
@@ -86,8 +113,67 @@ module.exports = function(Company) {
     }
 
     function mapTransactions(transaction) {
-      transaction.dateStr = transaction.date.getDate() + '/' + (transaction.date.getMonth() + 1) + '/' + transaction.date.getFullYear();
+      transaction.dateStr = getStrDate(transaction.date);
       return transaction;
+    }
+
+    function mapProduct(product) {
+      product.dateStr = getStrDate(product.date);
+      return product;
+    }
+
+    function getStrDate(date) {
+      return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
+    }
+
+    function getSameCategoryProperty(array, property) {
+      const newArray = [];
+      const categories = [];
+
+      newArray.push({
+        name: array[0].category,
+        value: array[0][property],
+      });
+      categories.push(array[0].categories);
+      array.slice(1).forEach((element) => {
+        let index = categories.indexOf(element.category);
+        if (index !== -1) {
+          newArray[index].value += element[property];
+        } else {
+          newArray.push({
+            name: element.category,
+            value: element[property],
+          });
+          categories.push(element.categories);
+        }
+      });
+
+      return newArray;
+    }
+
+    function getSameDayProperty(array, property) {
+      const newArray = [];
+      let index = 0;
+
+      newArray.push({
+        name: array[0].dateStr,
+        value: array[0][property],
+      });
+      array.slice(1).forEach((element) => {
+        if (newArray[index].name === element.dateStr) {
+          // console.log(newArray[index].value, parseFloat(newArray[index].value), parseFloat(element[property]));
+          console.log(property, element[property], element.current_stock, element.current_value);
+          newArray[index].value = (parseFloat(newArray[index].value) + parseFloat(element[property])).toFixed(2);
+        } else {
+          index++;
+          newArray.push({
+            name: element.dateStr,
+            value: element[property],
+          });
+        }
+      });
+
+      return newArray;
     }
 
     function getArrayBuySell(transactions) {
@@ -166,7 +252,12 @@ module.exports = function(Company) {
             amountByDay: [],
           },
           employee: {},
-          products: {},
+          products: {
+            stockByDay: [],
+            valueByDay: [],
+            stockByCategory: [],
+            valueByCategory: [],
+          },
         },
         data: {
           transactions: [],
@@ -188,10 +279,11 @@ module.exports = function(Company) {
           products: {
             amount: 0,
           },
-          // users: {
-          //   owners: 0,
-          //   managers: 0,
-          // },
+          users: {
+            // owners: 0,
+            // managers: 0,
+            amount: 0,
+          },
         },
       };
     }

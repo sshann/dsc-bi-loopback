@@ -52,10 +52,10 @@ module.exports = function(Company) {
 
       payload.data.products = products;
       payload.summary.products.amount = products.length;
-      payload.graph.products.stockByDay = getSameDayProperty(products, 'current_stock');
-      payload.graph.products.valueByDay = getSameDayProperty(products, 'current_value');
-      payload.graph.products.stockByCategory = getSameCategoryProperty(products, 'current_stock');
-      payload.graph.products.valueByCategory = getSameCategoryProperty(products, 'current_value');
+      payload.graph.products.stockByDay = getSameDayProperty(products, 'current_stock', 0);
+      payload.graph.products.valueByDay = getSameDayProperty(products, 'current_value', 2);
+      payload.graph.products.stockByCategory = getSameCategoryProperty(products, 'current_stock', 0);
+      payload.graph.products.valueByCategory = getSameCategoryProperty(products, 'current_value', 2);
       finish();
     }
 
@@ -126,49 +126,50 @@ module.exports = function(Company) {
       return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
     }
 
-    function getSameCategoryProperty(array, property) {
+    function getSameCategoryProperty(array, property, digits) {
       const newArray = [];
       const categories = [];
 
       newArray.push({
         name: array[0].category,
-        value: array[0][property],
+        value: array[0][property].toFixed(digits),
       });
-      categories.push(array[0].categories);
+      categories.push(array[0].category);
       array.slice(1).forEach((element) => {
         let index = categories.indexOf(element.category);
+        console.log(property, index, categories);
         if (index !== -1) {
-          newArray[index].value += element[property];
+          newArray[index].value = (parseFloat(newArray[index].value) + parseFloat(element[property])).toFixed(digits);
         } else {
           newArray.push({
             name: element.category,
-            value: element[property],
+            value: element[property].toFixed(digits),
           });
-          categories.push(element.categories);
+          categories.push(element.category);
         }
       });
 
       return newArray;
     }
 
-    function getSameDayProperty(array, property) {
+    function getSameDayProperty(array, property, digits) {
       const newArray = [];
       let index = 0;
 
       newArray.push({
         name: array[0].dateStr,
-        value: array[0][property],
+        value: array[0][property].toFixed(digits),
       });
       array.slice(1).forEach((element) => {
         if (newArray[index].name === element.dateStr) {
           // console.log(newArray[index].value, parseFloat(newArray[index].value), parseFloat(element[property]));
           console.log(property, element[property], element.current_stock, element.current_value);
-          newArray[index].value = (parseFloat(newArray[index].value) + parseFloat(element[property])).toFixed(2);
+          newArray[index].value = (parseFloat(newArray[index].value) + parseFloat(element[property])).toFixed(digits);
         } else {
           index++;
           newArray.push({
             name: element.dateStr,
-            value: element[property],
+            value: element[property].toFixed(digits),
           });
         }
       });

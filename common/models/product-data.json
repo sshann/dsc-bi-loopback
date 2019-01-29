@@ -10,17 +10,21 @@
       "type": "string",
       "required": true
     },
-    "date": {
-      "type": "date",
+    "current_stock": {
+      "type": "number",
       "required": true
     },
-    "total_value": {
+    "current_value": {
       "type": "number",
       "required": true
     },
     "name": {
       "type": "string",
       "required": true
+    },
+    "description": {
+      "type": "string",
+      "required": false
     }
   },
   "validations": [],

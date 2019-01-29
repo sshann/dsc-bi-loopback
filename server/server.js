@@ -2,11 +2,18 @@
 
 var loopback = require('loopback');
 var boot = require('loopback-boot');
+var errorHandler = require('strong-error-handler');
 
 var app = module.exports = loopback();
 
 app.start = function() {
   // start the web server
+
+  app.use(errorHandler({
+    debug: true,
+    log: true,
+  }));
+
   return app.listen(function() {
     app.emit('started');
     var baseUrl = app.get('url').replace(/\/$/, '');

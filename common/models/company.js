@@ -60,14 +60,8 @@ module.exports = function(Company) {
         name: 'Value',
         series: getSameDayProperty(products, 'current_value', 2),
       }];
-      payload.graph.products.stockByCategory = [{
-        name: 'Stock',
-        series: getSameCategoryProperty(products, 'current_stock', 0),
-      }];
-      payload.graph.products.valueByCategory = [{
-        name: 'Value',
-        series: getSameCategoryProperty(products, 'current_value', 2),
-      }];
+      payload.graph.products.stockByCategory = getSameCategoryProperty(products, 'current_stock', 0);
+      payload.graph.products.valueByCategory = getSameCategoryProperty(products, 'current_value', 2);
       finish();
     }
 

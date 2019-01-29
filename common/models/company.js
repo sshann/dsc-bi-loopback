@@ -52,22 +52,22 @@ module.exports = function(Company) {
 
       payload.data.products = products;
       payload.summary.products.amount = products.length;
-      payload.graph.products.stockByDay = {
+      payload.graph.products.stockByDay = [{
         name: 'Stock',
         series: getSameDayProperty(products, 'current_stock', 0),
-      };
-      payload.graph.products.valueByDay = {
+      }];
+      payload.graph.products.valueByDay = [{
         name: 'Value',
         series: getSameDayProperty(products, 'current_value', 2),
-      };
-      payload.graph.products.stockByCategory = {
+      }];
+      payload.graph.products.stockByCategory = [{
         name: 'Stock',
         series: getSameCategoryProperty(products, 'current_stock', 0),
-      };
-      payload.graph.products.valueByCategory = {
+      }];
+      payload.graph.products.valueByCategory = [{
         name: 'Value',
         series: getSameCategoryProperty(products, 'current_value', 2),
-      };
+      }];
       finish();
     }
 

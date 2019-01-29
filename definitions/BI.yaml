@@ -227,6 +227,82 @@ paths:
           schema:
             $ref: '#/definitions/ProductData'
       deprecated: false
+  '/Companies/{id}/clients/{fk}':
+    get:
+      tags:
+        - Company
+      summary: Find a related item by id for clients.
+      operationId: Company.prototype.__findById__clients
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for clients
+          required: true
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: Company id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Client'
+      deprecated: false
+    delete:
+      tags:
+        - Company
+      summary: Delete a related item by id for clients.
+      operationId: Company.prototype.__destroyById__clients
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for clients
+          required: true
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: Company id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+    put:
+      tags:
+        - Company
+      summary: Update a related item by id for clients.
+      operationId: Company.prototype.__updateById__clients
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for clients
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/Client'
+        - name: id
+          in: path
+          description: Company id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Client'
+      deprecated: false
   '/Companies/{id}/transactionData':
     get:
       tags:
@@ -486,6 +562,100 @@ paths:
         - Company
       summary: Counts productData of Company.
       operationId: Company.prototype.__count__productData
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: Company id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+  '/Companies/{id}/clients':
+    get:
+      tags:
+        - Company
+      summary: Queries clients of Company.
+      operationId: Company.prototype.__get__clients
+      parameters:
+        - name: filter
+          in: query
+          required: false
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: Company id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Client'
+      deprecated: false
+    post:
+      tags:
+        - Company
+      summary: Creates a new instance in clients of this model.
+      operationId: Company.prototype.__create__clients
+      parameters:
+        - name: data
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/Client'
+        - name: id
+          in: path
+          description: Company id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Client'
+      deprecated: false
+    delete:
+      tags:
+        - Company
+      summary: Deletes all clients of this model.
+      operationId: Company.prototype.__delete__clients
+      parameters:
+        - name: id
+          in: path
+          description: Company id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+  '/Companies/{id}/clients/count':
+    get:
+      tags:
+        - Company
+      summary: Counts clients of Company.
+      operationId: Company.prototype.__count__clients
       parameters:
         - name: where
           in: query
@@ -2622,6 +2792,25 @@ paths:
         '204':
           description: Request was successful
       deprecated: false
+  /Users/getRolesById:
+    get:
+      tags:
+        - Client
+      operationId: Client.getRolesById
+      parameters:
+        - name: id
+          in: query
+          required: false
+          type: string
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              payload:
+                type: object
+      deprecated: false
 definitions:
   x-any:
     properties: {}
@@ -2630,9 +2819,11 @@ definitions:
       date:
         type: string
         format: date-time
-      items:
+      amount:
         type: string
       reference:
+        type: string
+      description:
         type: string
       type:
         type: string
@@ -2645,8 +2836,7 @@ definitions:
         type: string
     required:
       - date
-      - items
-      - reference
+      - amount
       - type
       - value
     additionalProperties: false
@@ -2699,6 +2889,28 @@ definitions:
       - total_value
       - name
     additionalProperties: false
+  Client:
+    properties:
+      name:
+        type: string
+      phone:
+        type: string
+      realm:
+        type: string
+      username:
+        type: string
+      email:
+        type: string
+      emailVerified:
+        type: boolean
+      id:
+        type: string
+      company_id:
+        type: string
+    required:
+      - name
+      - email
+    additionalProperties: false
   Company:
     properties:
       name:
@@ -2738,26 +2950,6 @@ definitions:
         type: string
     required:
       - id
-    additionalProperties: false
-  Client:
-    properties:
-      name:
-        type: string
-      phone:
-        type: string
-      realm:
-        type: string
-      username:
-        type: string
-      email:
-        type: string
-      emailVerified:
-        type: boolean
-      id:
-        type: string
-    required:
-      - name
-      - email
     additionalProperties: false
 basePath: /api
 swagger: '2.0'

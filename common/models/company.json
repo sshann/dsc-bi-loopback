@@ -39,6 +39,11 @@
       "type": "hasMany",
       "model": "TransactionData",
       "foreignKey": "company_id"
+    },
+    "clients": {
+      "type": "hasMany",
+      "model": "Client",
+      "foreignKey": "company_id"
     }
   },
   "acls": [

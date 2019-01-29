@@ -137,7 +137,7 @@ module.exports = function(Company) {
       categories.push(array[0].category);
       array.slice(1).forEach((element) => {
         let index = categories.indexOf(element.category);
-        console.log(property, index, categories);
+        // console.log(property, index, categories);
         if (index !== -1) {
           newArray[index].value = (parseFloat(newArray[index].value) + parseFloat(element[property])).toFixed(digits);
         } else {
@@ -163,7 +163,7 @@ module.exports = function(Company) {
       array.slice(1).forEach((element) => {
         if (newArray[index].name === element.dateStr) {
           // console.log(newArray[index].value, parseFloat(newArray[index].value), parseFloat(element[property]));
-          console.log(property, element[property], element.current_stock, element.current_value);
+          // console.log(property, element[property], element.current_stock, element.current_value);
           newArray[index].value = (parseFloat(newArray[index].value) + parseFloat(element[property])).toFixed(digits);
         } else {
           index++;
@@ -195,14 +195,20 @@ module.exports = function(Company) {
       const countArray = [];
       let index = 0;
 
-      countArray.push(array[0]);
+      countArray.push({
+        name: array[0].name,
+        value: array[0].value,
+      });
       countArray[0].value = 1;
       array.slice(1).forEach((element) => {
         if (countArray[index].name === element.name) {
           countArray[index].value++;
         } else {
           index++;
-          countArray.push(element);
+          countArray.push({
+            name: element.name,
+            value: element.value,
+          });
           countArray[index].value = 1;
         }
       });

@@ -7,9 +7,11 @@ module.exports = function(Company) {
     let finishedCount = 0;
     const BUY_INDEX = 0;
     const SELL_INDEX = 1;
+    const resourcesRequested = 2;
 
     Company.getApp((err, app) => {
       let transactionModel = app.models.TransactionData;
+      let usernModel = app.models.Client;
 
       const transactionFilter = {
         where: {company_id: id},
@@ -17,8 +19,28 @@ module.exports = function(Company) {
         fields: {_rev: false, company_id: false, id: false, description: false},
       };
 
+      const userFilter = {
+        where: {company_id: id},
+        fields: {_rev: false, company_id: false, id: false, description: false},
+      };
+
       transactionModel.find(transactionFilter, transactionsCallback);
+
+      setTimeout(() => {
+        usernModel.find(userFilter, userCallback);
+      }, 500);
     });
+
+    function userCallback(err, users) {
+      if (err) {
+        payload = err;
+        finish(true);
+      }
+
+      payload.data.users = users;
+      console.log(users);
+      finish();
+    }
 
     function transactionsCallback(err, transactions) {
       if (err) {
@@ -131,7 +153,7 @@ module.exports = function(Company) {
     function finish(err) {
       finishedCount++;
 
-      if (err || finishedCount === 1) {
+      if (err || finishedCount === resourcesRequested) {
         callback(null, payload);
       }
     }
@@ -166,10 +188,10 @@ module.exports = function(Company) {
           products: {
             amount: 0,
           },
-          users: {
-            owners: 0,
-            managers: 0,
-          },
+          // users: {
+          //   owners: 0,
+          //   managers: 0,
+          // },
         },
       };
     }

@@ -29,6 +29,20 @@
       "principalType": "ROLE",
       "principalId": "admin",
       "permission": "ALLOW"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "business_owner",
+      "permission": "ALLOW",
+      "property": "getRolesById"
+    }
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "business_manager",
+      "permission": "ALLOW",
+      "property": "getRolesById"
     }
   ],
   "methods": {}

@@ -29,6 +29,10 @@
     "description": {
       "type": "string",
       "required": false
+    },
+    "reference": {
+      "type": "string",
+      "required": false
     }
   },
   "validations": [],

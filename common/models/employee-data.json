@@ -25,6 +25,10 @@
     "total_teams": {
       "type": "number",
       "required": true
+    },
+    "reference": {
+      "type": "string",
+      "required": false
     }
   },
   "validations": [],

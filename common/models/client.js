@@ -44,38 +44,51 @@ module.exports = function(Client) {
       }
     });
   };
+
   Client.remoteMethod('roles', {
     http: {path: '/roles', verb: 'get'},
     accepts: {arg: 'id', type: 'string'},
     returns: {arg: 'payload', type: 'Object'},
   });
+
+  Client.observe('after save', function(ctx, next) {
+    // console.log('ctx', ctx);
+
+    Client.getApp(function(err, app) {
+      let roleId;
+
+      // console.log('===========');
+      if (ctx.instance.role) {
+        app.models.Role.find((err, roles) => {
+          // console.log('roles', roles);
+          roles.forEach(role => {
+            if (ctx.instance.role === role.name) {
+              roleId = role.id;
+            }
+          });
+          ctx.instance.text = 'AAA';
+          if (roleId) {
+            const newRoleMapping = {
+              'principalType': 'USER',
+              'principalId': ctx.instance.id,
+              'roleId': roleId,
+            };
+            app.models.RoleMapping.create(newRoleMapping, (err, mapping) => {
+              // console.log(err, mapping);
+              next();
+            });
+          }
+        });
+
+      }
+      // if (ctx.instance) {
+      //   console.log('Saved %s#%s', ctx.Model.modelName, ctx.instance.id);
+      // } else {
+      //   console.log('Updated %s matching %j',
+      //     ctx.Model.pluralModelName,
+      //     ctx.where);
+      // }
+    });
+  });
 };
 
-// {
-//   "accessType": "EXECUTE",
-//   "principalType": "ROLE",
-//   "principalId": "business_owner",
-//   "permission": "ALLOW",
-//   "property": "create"
-// },
-// {
-//   "accessType": "EXECUTE",
-//   "principalType": "ROLE",
-//   "principalId": "business_owner",
-//   "permission": "ALLOW",
-//   "property": "deleteById"
-// },
-// {
-//   "accessType": "EXECUTE",
-//   "principalType": "ROLE",
-//   "principalId": "business_owner",
-//   "permission": "ALLOW",
-//   "property": "upsert"
-// },
-// {
-//   "accessType": "EXECUTE",
-//   "principalType": "ROLE",
-//   "principalId": "business_owner",
-//   "permission": "ALLOW",
-//   "property": "find"
-// }

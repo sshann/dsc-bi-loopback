@@ -7,11 +7,12 @@ module.exports = function(Company) {
     let finishedCount = 0;
     const BUY_INDEX = 0;
     const SELL_INDEX = 1;
-    const resourcesRequested = 3;
+    const resourcesRequested = 4;
 
     Company.getApp((err, app) => {
       let transactionModel = app.models.TransactionData;
       let productModel = app.models.ProductData;
+      let employeeModel = app.models.EmployeeData;
       let usernModel = app.models.Client;
 
       const transactionFilter = {
@@ -26,6 +27,16 @@ module.exports = function(Company) {
         fields: {_rev: false, company_id: false, id: false, description: false},
       };
 
+      const employeeFilter = {
+        where: {company_id: id},
+        order: 'date ASC',
+        fields: {
+          _rev: false,
+          company_id: false,
+          id: false,
+        },
+      };
+
       const userFilter = {
         where: {company_id: id},
         fields: {_rev: false, company_id: false, id: false, description: false},
@@ -33,14 +44,42 @@ module.exports = function(Company) {
 
       transactionModel.find(transactionFilter, transactionsCallback);
 
-      setTimeout(() => {
-        usernModel.find(userFilter, userCallback);
-      }, 500);
+      // setTimeout(() => {
+      usernModel.find(userFilter, userCallback);
+      // }, 500);
 
-      setTimeout(() => {
-        productModel.find(productFilter, productCallback);
-      }, 500);
+      // setTimeout(() => {
+      productModel.find(productFilter, productCallback);
+      // }, 500);
+
+      employeeModel.find(employeeFilter, employeeCallback);
     });
+
+    function employeeCallback(err, employees) {
+      if (err) {
+        payload = err;
+        finish(true);
+      }
+
+      employees = employees.map(mapEmployee);
+      payload.data.employees = employees.slice();
+      payload.summary.employees.amount = employees.length;
+      payload.summary.employees.departments = employees.map(mapDepartments).filter(uniqueDepartments).length;
+      payload.graph.employees.employeesByDay = {
+        name: 'Number of Employees',
+        series: getSameDayProperty(employees, 'total_employees', 0),
+      };
+      payload.graph.employees.teamsByDay = {
+        name: 'Number of Teams',
+        series: getSameDayProperty(employees, 'total_teams', 0),
+      };
+      payload.graph.employees.salaryByDay = {
+        name: 'Total Salary',
+        series: getSameDayProperty(employees, 'total_salary_paid', 2),
+      };
+      payload.graph.employees.thisYearSalaryByDepartment = getSameFieldProperty(employees.filter(filterThisYearEmployees), 'department', 'total_salary_paid', 2);
+      finish();
+    }
 
     function productCallback(err, products) {
       if (err) {
@@ -60,8 +99,8 @@ module.exports = function(Company) {
         name: 'Value',
         series: getSameDayProperty(products, 'current_value', 2),
       }];
-      payload.graph.products.stockByCategory = getSameCategoryProperty(products, 'current_stock', 0);
-      payload.graph.products.valueByCategory = getSameCategoryProperty(products, 'current_value', 2);
+      payload.graph.products.stockByCategory = getSameFieldProperty(products, 'category', 'current_stock', 0);
+      payload.graph.products.valueByCategory = getSameFieldProperty(products, 'category,', 'current_value', 2);
       finish();
     }
 
@@ -118,6 +157,15 @@ module.exports = function(Company) {
       return count;
     }
 
+    function uniqueDepartments(department, index, self) {
+      return self.indexOf(department) === index;
+    }
+
+    function filterThisYearEmployees(employee) {
+      const year = new Date().getFullYear();
+      return employee.year = year;
+    }
+
     function mapTransactions(transaction) {
       transaction.dateStr = getStrDate(transaction.date);
       return transaction;
@@ -128,30 +176,40 @@ module.exports = function(Company) {
       return product;
     }
 
+    function mapDepartments(employee) {
+      return employee.department;
+    }
+
+    function mapEmployee(employee) {
+      employee.year = employee.date.getFullYear();
+      employee.dateStr = (employee.date.getMonth() + 1) + '/' + employee.date.getFullYear();
+      return employee;
+    }
+
     function getStrDate(date) {
       return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
     }
 
-    function getSameCategoryProperty(array, property, digits) {
+    function getSameFieldProperty(array, groupByField, property, digits) {
       const newArray = [];
-      const categories = [];
+      const fields = [];
 
       newArray.push({
-        name: array[0].category,
+        name: array[0][groupByField],
         value: array[0][property].toFixed(digits),
       });
-      categories.push(array[0].category);
+      fields.push(array[0][groupByField]);
       array.slice(1).forEach((element) => {
-        let index = categories.indexOf(element.category);
+        let index = fields.indexOf(element[groupByField]);
         // console.log(property, index, categories);
         if (index !== -1) {
           newArray[index].value = (parseFloat(newArray[index].value) + parseFloat(element[property])).toFixed(digits);
         } else {
           newArray.push({
-            name: element.category,
+            name: element[groupByField],
             value: element[property].toFixed(digits),
           });
-          categories.push(element.category);
+          fields.push(element[groupByField]);
         }
       });
 
@@ -264,7 +322,12 @@ module.exports = function(Company) {
             valueByDay: [],
             amountByDay: [],
           },
-          employee: {},
+          employees: {
+            teamsByDay: [],
+            employeesByDay: [],
+            salaryByDay: [],
+            thisYearSalaryByDepartment: [],
+          },
           products: {
             stockByDay: [],
             valueByDay: [],
@@ -274,7 +337,7 @@ module.exports = function(Company) {
         },
         data: {
           transactions: [],
-          employee: [],
+          employees: [],
           products: [],
           users: [],
         },

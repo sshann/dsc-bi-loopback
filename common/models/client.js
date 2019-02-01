@@ -79,7 +79,6 @@ module.exports = function(Client) {
             });
           }
         });
-
       }
       // if (ctx.instance) {
       //   console.log('Saved %s#%s', ctx.Model.modelName, ctx.instance.id);

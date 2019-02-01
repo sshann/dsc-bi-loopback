@@ -65,6 +65,19 @@
       "principalId": "business_owner",
       "permission": "DENY",
       "property": "create"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "business_owner",
+      "permission": "DENY",
+      "property": "find"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "business_manager",
+      "permission": "DENY"
     }
   ],
   "methods": {}

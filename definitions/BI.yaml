@@ -2875,6 +2875,8 @@ definitions:
       total_teams:
         type: number
         format: double
+      reference:
+        type: string
       id:
         type: string
       company_id:
@@ -2902,6 +2904,8 @@ definitions:
       name:
         type: string
       description:
+        type: string
+      reference:
         type: string
       id:
         type: string

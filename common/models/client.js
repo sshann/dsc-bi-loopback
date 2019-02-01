@@ -51,3 +51,31 @@ module.exports = function(Client) {
   });
 };
 
+// {
+//   "accessType": "EXECUTE",
+//   "principalType": "ROLE",
+//   "principalId": "business_owner",
+//   "permission": "ALLOW",
+//   "property": "create"
+// },
+// {
+//   "accessType": "EXECUTE",
+//   "principalType": "ROLE",
+//   "principalId": "business_owner",
+//   "permission": "ALLOW",
+//   "property": "deleteById"
+// },
+// {
+//   "accessType": "EXECUTE",
+//   "principalType": "ROLE",
+//   "principalId": "business_owner",
+//   "permission": "ALLOW",
+//   "property": "upsert"
+// },
+// {
+//   "accessType": "EXECUTE",
+//   "principalType": "ROLE",
+//   "principalId": "business_owner",
+//   "permission": "ALLOW",
+//   "property": "find"
+// }

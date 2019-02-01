@@ -5,7 +5,7 @@ var _ = require('underscore');
 module.exports = function(Client) {
   // getRolesById was found in the gist https://gist.github.com/zhenyanghua/d24ea57cd70e69bcb82dc3bc8f14ea74
   // Timeouts are added due the quota limit in the database
-  Client.getRolesById = function(id, cb) {
+  Client.roles = function(id, cb) {
     Client.getApp(function(err, app) {
       if (err) throw err;
       var RoleMapping = app.models.RoleMapping;
@@ -44,8 +44,8 @@ module.exports = function(Client) {
       }
     });
   };
-  Client.remoteMethod('getRolesById', {
-    http: {path: '/getRolesById', verb: 'get'},
+  Client.remoteMethod('roles', {
+    http: {path: '/roles', verb: 'get'},
     accepts: {arg: 'id', type: 'string'},
     returns: {arg: 'payload', type: 'Object'},
   });

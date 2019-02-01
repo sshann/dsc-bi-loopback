@@ -33,16 +33,9 @@
     {
       "accessType": "EXECUTE",
       "principalType": "ROLE",
-      "principalId": "business_owner",
+      "principalId": "$authenticated",
       "permission": "ALLOW",
-      "property": "getRolesById"
-    },
-    {
-      "accessType": "EXECUTE",
-      "principalType": "ROLE",
-      "principalId": "business_manager",
-      "permission": "ALLOW",
-      "property": "getRolesById"
+      "property": "roles"
     }
   ],
   "methods": {}

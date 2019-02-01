@@ -1039,6 +1039,25 @@ paths:
                 type: number
                 format: double
       deprecated: false
+  /Companies/report:
+    get:
+      tags:
+        - Company
+      operationId: Company.getReport
+      parameters:
+        - name: id
+          in: query
+          required: false
+          type: string
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              payload:
+                type: object
+      deprecated: false
   /TransactionData:
     post:
       tags:
@@ -2792,11 +2811,11 @@ paths:
         '204':
           description: Request was successful
       deprecated: false
-  /Users/getRolesById:
+  /Users/roles:
     get:
       tags:
         - Client
-      operationId: Client.getRolesById
+      operationId: Client.roles
       parameters:
         - name: id
           in: query
@@ -2874,10 +2893,15 @@ definitions:
       date:
         type: string
         format: date-time
-      total_value:
+      current_stock:
+        type: number
+        format: double
+      current_value:
         type: number
         format: double
       name:
+        type: string
+      description:
         type: string
       id:
         type: string
@@ -2886,7 +2910,8 @@ definitions:
     required:
       - category
       - date
-      - total_value
+      - current_stock
+      - current_value
       - name
     additionalProperties: false
   Client:

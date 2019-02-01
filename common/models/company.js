@@ -65,19 +65,23 @@ module.exports = function(Company) {
       payload.data.employees = employees.slice();
       payload.summary.employees.amount = employees.length;
       payload.summary.employees.departments = employees.map(mapDepartments).filter(uniqueDepartments).length;
-      payload.graph.employees.employeesByDay = {
+      payload.graph.employees.employeesByDay = [{
         name: 'Number of Employees',
         series: getSameDayProperty(employees, 'total_employees', 0),
-      };
-      payload.graph.employees.teamsByDay = {
+      }];
+      payload.graph.employees.teamsByDay = [{
         name: 'Number of Teams',
         series: getSameDayProperty(employees, 'total_teams', 0),
-      };
-      payload.graph.employees.salaryByDay = {
+      }];
+      payload.graph.employees.salaryByDay = [{
         name: 'Total Salary',
         series: getSameDayProperty(employees, 'total_salary_paid', 2),
-      };
-      payload.graph.employees.thisYearSalaryByDepartment = getSameFieldProperty(employees.filter(filterThisYearEmployees), 'department', 'total_salary_paid', 2);
+      }];
+      payload.graph.employees.thisYearSalaryByDepartment = getSameFieldProperty(
+        employees.filter(filterThisYearEmployees),
+        'department',
+        'total_salary_paid',
+        2).filter(filterNotEmptyvalue);
       finish();
     }
 
@@ -100,7 +104,7 @@ module.exports = function(Company) {
         series: getSameDayProperty(products, 'current_value', 2),
       }];
       payload.graph.products.stockByCategory = getSameFieldProperty(products.slice(), 'category', 'current_stock', 0);
-      payload.graph.products.valueByCategory = getSameFieldProperty(products.slice(), 'category,', 'current_value', 2);
+      payload.graph.products.valueByCategory = getSameFieldProperty(products.slice(), 'category', 'current_value', 2);
       finish();
     }
 
@@ -164,6 +168,10 @@ module.exports = function(Company) {
     function filterThisYearEmployees(employee) {
       const year = new Date().getFullYear();
       return employee.year = year;
+    }
+
+    function filterNotEmptyvalue(element) {
+      return parseFloat(element.value) !== 0;
     }
 
     function mapTransactions(transaction) {

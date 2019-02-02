@@ -35,7 +35,14 @@
   },
   "AccessToken": {
     "dataSource": "access_token_cloudant",
-    "public": false
+    "public": false,
+    "relations": {
+      "user": {
+        "type": "belongsTo",
+        "model": "Client",
+        "foreignKey": "userId"
+      }
+    }
   },
   "ACL": {
     "dataSource": "acl_cloudant",

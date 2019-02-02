@@ -91,3 +91,39 @@ module.exports = function(Client) {
   });
 };
 
+// Update ACL is not working.
+// {
+//   "accessType": "EXECUTE",
+//   "principalType": "ROLE",
+//   "principalId": "business_owner",
+//   "permission": "ALLOW",
+//   "property": "create"
+// },
+// {
+//   "accessType": "EXECUTE",
+//   "principalType": "ROLE",
+//   "principalId": "business_owner",
+//   "permission": "ALLOW",
+//   "property": "deleteById"
+// },
+// {
+//   "accessType": "EXECUTE",
+//   "principalType": "ROLE",
+//   "principalId": "business_owner",
+//   "permission": "ALLOW",
+//   "property": "updateAttributes"
+// },
+// {
+//   "accessType": "EXECUTE",
+//   "principalType": "ROLE",
+//   "principalId": "business_owner",
+//   "permission": "ALLOW",
+//   "property": "upsert"
+// },
+// {
+//   "accessType": "EXECUTE",
+//   "principalType": "ROLE",
+//   "principalId": "business_owner",
+//   "permission": "ALLOW",
+//   "property": "find"
+// }

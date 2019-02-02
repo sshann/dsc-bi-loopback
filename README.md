@@ -23,7 +23,7 @@ You can access the API on the [test environment](https://toolchain-dsc-bi.eu-gb.
 
 ## Architecture
 
-You can check the API architecture and main features in the [UseCase Diagram](UC_diagram.png) and [Class Diagram](Class_diagram.png).
+You can check the API architecture and main features in the [UseCase Diagram](docs/UC_diagram.png) and [Class Diagram](docs/Class_diagram.png).
 
 ## Hooks and Remote Methods
 

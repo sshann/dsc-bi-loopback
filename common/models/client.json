@@ -63,6 +63,13 @@
       "principalType": "ROLE",
       "principalId": "business_owner",
       "permission": "ALLOW",
+      "property": "upsert"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "business_owner",
+      "permission": "ALLOW",
       "property": "find"
     }
   ],

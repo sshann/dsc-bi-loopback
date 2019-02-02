@@ -61,6 +61,10 @@ module.exports = function(Company) {
         finish(true);
       }
 
+      if (!employees.length) {
+        finish();
+      }
+
       employees = employees.map(mapEmployee);
       payload.data.employees = employees.slice();
       payload.summary.employees.amount = employees.length;
@@ -89,6 +93,10 @@ module.exports = function(Company) {
       if (err) {
         payload = err;
         finish(true);
+      }
+
+      if (!products.length) {
+        finish();
       }
 
       products = products.map(mapProduct);
@@ -123,6 +131,10 @@ module.exports = function(Company) {
       if (err) {
         payload = err;
         finish(true);
+      }
+
+      if (!transactions.length) {
+        finish();
       }
 
       transactions = transactions.map(mapTransactions);
